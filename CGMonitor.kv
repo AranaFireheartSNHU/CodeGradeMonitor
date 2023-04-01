@@ -1,0 +1,42 @@
+WindowManager:
+    CourseGridLayout:
+    CourseProgressWindow:
+
+<CourseGridLayout>:
+    name: "courselist"
+    id: courseList
+    BoxLayout:
+        id: upperBox
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Image:
+            source: "logo.png"
+
+        GridLayout:
+            name: "bottomGrid"
+            id: buttonGrid
+            cols: 2
+
+        Button:
+            text: "Next Screen"
+            font_size: 32
+            on_press:
+                root.manager.current = "courseprogress"
+                root.manager.transition.direction = "left"
+
+<CourseProgressWindow>:
+    name: "courseprogress"
+    id: courseprogress
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            id: progressoutput
+        Button:
+            text: "Go Back"
+            font_size: 32
+            on_press:
+                app.root.current = "courselist"
+                root.manager.transition.direction = "right"
